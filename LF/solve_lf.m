@@ -1,28 +1,5 @@
-## Copyright (C) 2018 DEll
-## 
-## This program is free software: you can redistribute it and/or modify it
-## under the terms of the GNU General Public License as published by
-## the Free Software Foundation, either version 3 of the License, or
-## (at your option) any later version.
-## 
-## This program is distributed in the hope that it will be useful, but
-## WITHOUT ANY WARRANTY; without even the implied warranty of
-## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-## GNU General Public License for more details.
-## 
-## You should have received a copy of the GNU General Public License
-## along with this program.  If not, see
-## <https://www.gnu.org/licenses/>.
 
-## -*- texinfo -*- 
-## @deftypefn {} {@var{retval} =} solve_lf (@var{input1}, @var{input2})
-##
-## @seealso{}
-## @end deftypefn
-
-## Author: DEll <DEll@DESKTOP-71P0RHI>
-## Created: 2018-11-01
-function [g_x] = solve_lf (X,G,B,PGD,QGD,PAR);
+function [g_x] = solve_lf (X,G,B,PGD,QGD,PAR)
   
  format short g
   
@@ -42,27 +19,26 @@ function [g_x] = solve_lf (X,G,B,PGD,QGD,PAR);
     for n=1:nbus
       PP(m,n)=VOLT(m)*VOLT(n)*(G(m,n)*cos(ANG(m)-ANG(n))+B(m,n)*sin(ANG(m)-ANG(n)));
       QQ(m,n)=VOLT(m)*VOLT(n)*(G(m,n)*sin(ANG(m)-ANG(n))-B(m,n)*cos(ANG(m)-ANG(n)));
-    end,
-  end,
-  P=sum(PP');
-  Q=sum(QQ');
+    end
+  end
+  P=sum(PP')';
+  Q=sum(QQ')';
   
   %Active Power Mismatch for PU and PQ buses
   
-  g_x(1)=P2-PGD2;
-  g_x(2)=P3-PGD3;
-  g_x(3)=P4-PGD4;
-  g_x(4)=P5-PGD5;
-  g_x(5)=P6-PGD6;
-  g_x(6)=P7-PGD7;
-  g_x(7)=P8-PGD8;
+  g_x(1)=P(2)-PGD2;
+  g_x(2)=P(3)-PGD3;
+  g_x(3)=P(4)-PGD4;
+  g_x(4)=P(5)-PGD5;
+  g_x(5)=P(6)-PGD6;
+  g_x(6)=P(7)-PGD7;
+  g_x(7)=P(8)-PGD8;
   
   %Reactive Power Mismatch 
-  g_x(8)=Q2-QGD2;
-  g_x(9)=Q4-QGD4;
-  g_X(10)=Q5-QGD5;
-  g_x(11)=Q6-QGD6;
-  g_x(12)=Q8-QGD8;
+  g_x(8)=Q(2)-QGD2;
+  g_x(9)=Q(4)-QGD4;
+  g_x(10)=Q(5)-QGD5;
+  g_x(11)=Q(6)-QGD6;
+  g_x(12)=Q(8)-QGD8;
   
-
-endfunction;
+end
