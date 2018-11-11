@@ -256,55 +256,55 @@ g=-G; b=-B;
 P12=((g(1,2)*(VOLT(1)^2))-(VOLT(1)*VOLT(2)*(g(1,2)*cos(ANG(1)-ANG(2))+b(1,2)*sin(ANG(1)-ANG(2)))))*Sbase; %in MW
 P21=((g(2,1)*(VOLT(2)^2))-(VOLT(2)*VOLT(1)*(g(2,1)*cos(ANG(2)-ANG(1))+b(2,1)*sin(ANG(2)-ANG(1)))))*Sbase; %in MW
 Q12=(((-ysh12pu-b(1,2))*(VOLT(1)^2))-(VOLT(1)*VOLT(2)*(g(1,2)*sin(ANG(1)-ANG(2))-b(1,2)*cos(ANG(1)-ANG(2)))))*Sbase; %in MVar
-Q21=(((-ysh12pu-b(2,1))*(VOLT(2)^2))-(VOLT(2)*VOLT(1)*(g(2,1)*sin(ANG(2)-ANG(1))-b(2,1)*cos(ANG(2)-ANG(1)))))*Sbase; %in MVar
+Q21=(((-imag(ysh12pu)-b(2,1))*(VOLT(2)^2))-(VOLT(2)*VOLT(1)*(g(2,1)*sin(ANG(2)-ANG(1))-b(2,1)*cos(ANG(2)-ANG(1)))))*Sbase; %in MVar
 Ploss_12=P12+P21;
 
 P23=((g(2,3)*(VOLT(2)^2))-(VOLT(2)*VOLT(3)*(g(2,3)*cos(ANG(2)-ANG(3))+b(2,3)*sin(ANG(2)-ANG(3)))))*Sbase; %in MW
 P32=((g(3,2)*(VOLT(3)^2))-(VOLT(3)*VOLT(2)*(g(3,2)*cos(ANG(3)-ANG(2))+b(3,2)*sin(ANG(3)-ANG(2)))))*Sbase; %in MW
-Q23=(((-ysh23pu-b(2,3))*(VOLT(2)^2))-(VOLT(2)*VOLT(3)*(g(2,3)*sin(ANG(2)-ANG(3))-b(2,3)*cos(ANG(2)-ANG(3)))))*Sbase; %in MVar
-Q32=(((-ysh23pu-b(3,2))*(VOLT(3)^2))-(VOLT(3)*VOLT(2)*(g(3,2)*sin(ANG(3)-ANG(2))-b(3,2)*cos(ANG(3)-ANG(2)))))*Sbase; %in MVar
+Q23=(((-imag(ysh23pu)-b(2,3))*(VOLT(2)^2))-(VOLT(2)*VOLT(3)*(g(2,3)*sin(ANG(2)-ANG(3))-b(2,3)*cos(ANG(2)-ANG(3)))))*Sbase; %in MVar
+Q32=(((-imag(ysh23pu)-b(3,2))*(VOLT(3)^2))-(VOLT(3)*VOLT(2)*(g(3,2)*sin(ANG(3)-ANG(2))-b(3,2)*cos(ANG(3)-ANG(2)))))*Sbase; %in MVar
 Ploss_23=P23+P32;
 
 P34=((g(3,4)*(VOLT(3)^2))-(VOLT(3)*VOLT(4)*(g(3,4)*cos(ANG(3)-ANG(4))+b(3,4)*sin(ANG(3)-ANG(4)))))*Sbase; %in MW
 P43=((g(4,3)*(VOLT(4)^2))-(VOLT(4)*VOLT(3)*(g(4,3)*cos(ANG(4)-ANG(3))+b(4,3)*sin(ANG(4)-ANG(3)))))*Sbase; %in MW
-Q34=(((-ysh34pu-b(3,4))*(VOLT(3)^2))-(VOLT(3)*VOLT(4)*(g(3,4)*sin(ANG(3)-ANG(4))-b(3,4)*cos(ANG(3)-ANG(4)))))*Sbase; %in MVar
-Q43=(((-ysh34pu-b(4,3))*(VOLT(4)^2))-(VOLT(4)*VOLT(3)*(g(4,3)*sin(ANG(4)-ANG(3))-b(4,3)*cos(ANG(4)-ANG(3)))))*Sbase; %in MVar
+Q34=(((-imag(ysh34pu)-b(3,4))*(VOLT(3)^2))-(VOLT(3)*VOLT(4)*(g(3,4)*sin(ANG(3)-ANG(4))-b(3,4)*cos(ANG(3)-ANG(4)))))*Sbase; %in MVar
+Q43=(((-imag(ysh34pu)-b(4,3))*(VOLT(4)^2))-(VOLT(4)*VOLT(3)*(g(4,3)*sin(ANG(4)-ANG(3))-b(4,3)*cos(ANG(4)-ANG(3)))))*Sbase; %in MVar
 Ploss_34=P34+P43;
 
 P45=((g(4,5)*(VOLT(4)^2))-(VOLT(4)*VOLT(5)*(g(4,5)*cos(ANG(4)-ANG(5))+b(4,5)*sin(ANG(4)-ANG(5)))))*Sbase; %in MW
 P54=((g(5,4)*(VOLT(5)^2))-(VOLT(5)*VOLT(4)*(g(5,4)*cos(ANG(5)-ANG(4))+b(5,4)*sin(ANG(5)-ANG(4)))))*Sbase; %in MW
-Q45=(((-ysh45pu-b(4,5))*(VOLT(4)^2))-(VOLT(4)*VOLT(5)*(g(4,5)*sin(ANG(4)-ANG(5))-b(4,5)*cos(ANG(4)-ANG(5)))))*Sbase; %in MVar
-Q54=(((-ysh45pu-b(5,4))*(VOLT(5)^2))-(VOLT(5)*VOLT(4)*(g(5,4)*sin(ANG(5)-ANG(4))-b(5,4)*cos(ANG(5)-ANG(4)))))*Sbase; %in MVar
+Q45=(((-imag(ysh45pu)-b(4,5))*(VOLT(4)^2))-(VOLT(4)*VOLT(5)*(g(4,5)*sin(ANG(4)-ANG(5))-b(4,5)*cos(ANG(4)-ANG(5)))))*Sbase; %in MVar
+Q54=(((-imag(ysh45pu)-b(5,4))*(VOLT(5)^2))-(VOLT(5)*VOLT(4)*(g(5,4)*sin(ANG(5)-ANG(4))-b(5,4)*cos(ANG(5)-ANG(4)))))*Sbase; %in MVar
 Ploss_45=P45+P54;
 
 P56=((g(5,6)*(VOLT(5)^2))-(VOLT(5)*VOLT(6)*(g(5,6)*cos(ANG(5)-ANG(6))+b(5,6)*sin(ANG(5)-ANG(6)))))*Sbase; %in MW
 P65=((g(6,5)*(VOLT(6)^2))-(VOLT(6)*VOLT(5)*(g(6,5)*cos(ANG(6)-ANG(5))+b(6,5)*sin(ANG(6)-ANG(5)))))*Sbase; %in MW
-Q56=(((-ysh56pu-b(5,6))*(VOLT(5)^2))-(VOLT(5)*VOLT(6)*(g(5,6)*sin(ANG(5)-ANG(6))-b(5,6)*cos(ANG(5)-ANG(6)))))*Sbase; %in MVar
-Q65=(((-ysh56pu-b(6,5))*(VOLT(6)^2))-(VOLT(6)*VOLT(5)*(g(6,5)*sin(ANG(6)-ANG(5))-b(6,5)*cos(ANG(6)-ANG(5)))))*Sbase; %in MVar
+Q56=(((-imag(ysh56pu)-b(5,6))*(VOLT(5)^2))-(VOLT(5)*VOLT(6)*(g(5,6)*sin(ANG(5)-ANG(6))-b(5,6)*cos(ANG(5)-ANG(6)))))*Sbase; %in MVar
+Q65=(((-imag(ysh56pu)-b(6,5))*(VOLT(6)^2))-(VOLT(6)*VOLT(5)*(g(6,5)*sin(ANG(6)-ANG(5))-b(6,5)*cos(ANG(6)-ANG(5)))))*Sbase; %in MVar
 Ploss_56=P56+P65;
 
 P67=((g(6,7)*(VOLT(6)^2))-(VOLT(6)*VOLT(7)*(g(6,7)*cos(ANG(6)-ANG(7))+b(6,7)*sin(ANG(6)-ANG(7)))))*Sbase; %in MW
 P76=((g(7,6)*(VOLT(7)^2))-(VOLT(7)*VOLT(6)*(g(7,6)*cos(ANG(7)-ANG(6))+b(7,6)*sin(ANG(7)-ANG(6)))))*Sbase; %in MW
-Q67=(((-ysh67pu-b(6,7))*(VOLT(6)^2))-(VOLT(6)*VOLT(7)*(g(6,7)*sin(ANG(6)-ANG(7))-b(6,7)*cos(ANG(6)-ANG(7)))))*Sbase; %in MVar
-Q76=(((-ysh67pu-b(7,6))*(VOLT(7)^2))-(VOLT(7)*VOLT(6)*(g(7,6)*sin(ANG(7)-ANG(6))-b(7,6)*cos(ANG(7)-ANG(6)))))*Sbase; %in MVar
+Q67=(((-imag(ysh67pu)-b(6,7))*(VOLT(6)^2))-(VOLT(6)*VOLT(7)*(g(6,7)*sin(ANG(6)-ANG(7))-b(6,7)*cos(ANG(6)-ANG(7)))))*Sbase; %in MVar
+Q76=(((-imag(ysh67pu)-b(7,6))*(VOLT(7)^2))-(VOLT(7)*VOLT(6)*(g(7,6)*sin(ANG(7)-ANG(6))-b(7,6)*cos(ANG(7)-ANG(6)))))*Sbase; %in MVar
 Ploss_67=P67+P76;
 
 P78=((g(7,8)*(VOLT(7)^2))-(VOLT(7)*VOLT(8)*(g(7,8)*cos(ANG(7)-ANG(8))+b(7,8)*sin(ANG(7)-ANG(8)))))*Sbase; %in MW
 P87=((g(8,7)*(VOLT(8)^2))-(VOLT(8)*VOLT(7)*(g(8,7)*cos(ANG(8)-ANG(7))+b(8,7)*sin(ANG(8)-ANG(7)))))*Sbase; %in MW
-Q78=(((-ysh78pu-b(7,8))*(VOLT(7)^2))-(VOLT(7)*VOLT(8)*(g(7,8)*sin(ANG(7)-ANG(8))-b(7,8)*cos(ANG(7)-ANG(8)))))*Sbase; %in MVar
-Q87=(((-ysh78pu-b(8,7))*(VOLT(8)^2))-(VOLT(8)*VOLT(7)*(g(8,7)*sin(ANG(8)-ANG(7))-b(8,7)*cos(ANG(8)-ANG(7)))))*Sbase; %in MVar
+Q78=(((-imag(ysh78pu)-b(7,8))*(VOLT(7)^2))-(VOLT(7)*VOLT(8)*(g(7,8)*sin(ANG(7)-ANG(8))-b(7,8)*cos(ANG(7)-ANG(8)))))*Sbase; %in MVar
+Q87=(((-imag(ysh78pu)-b(8,7))*(VOLT(8)^2))-(VOLT(8)*VOLT(7)*(g(8,7)*sin(ANG(8)-ANG(7))-b(8,7)*cos(ANG(8)-ANG(7)))))*Sbase; %in MVar
 Ploss_78=P78+P87;
 
 P36=((g(3,6)*(VOLT(3)^2))-(VOLT(3)*VOLT(6)*(g(3,6)*cos(ANG(3)-ANG(6))+b(3,6)*sin(ANG(3)-ANG(6)))))*Sbase; %in MW
 P63=((g(6,3)*(VOLT(6)^2))-(VOLT(6)*VOLT(3)*(g(6,3)*cos(ANG(6)-ANG(3))+b(6,3)*sin(ANG(6)-ANG(3)))))*Sbase; %in MW
-Q36=(((-ysh36pu-b(3,6))*(VOLT(3)^2))-(VOLT(3)*VOLT(6)*(g(3,6)*sin(ANG(3)-ANG(6))-b(3,6)*cos(ANG(3)-ANG(6)))))*Sbase; %in MVar
-Q63=(((-ysh36pu-b(6,3))*(VOLT(6)^2))-(VOLT(6)*VOLT(3)*(g(6,3)*sin(ANG(6)-ANG(3))-b(6,3)*cos(ANG(6)-ANG(3)))))*Sbase; %in MVar
+Q36=(((-imag(ysh36pu)-b(3,6))*(VOLT(3)^2))-(VOLT(3)*VOLT(6)*(g(3,6)*sin(ANG(3)-ANG(6))-b(3,6)*cos(ANG(3)-ANG(6)))))*Sbase; %in MVar
+Q63=(((-imag(ysh36pu)-b(6,3))*(VOLT(6)^2))-(VOLT(6)*VOLT(3)*(g(6,3)*sin(ANG(6)-ANG(3))-b(6,3)*cos(ANG(6)-ANG(3)))))*Sbase; %in MVar
 Ploss_36=P36+P63;
 
 P28=((g(2,8)*(VOLT(2)^2))-(VOLT(2)*VOLT(8)*(g(2,8)*cos(ANG(2)-ANG(8))+b(2,8)*sin(ANG(2)-ANG(8)))))*Sbase; %in MW
 P82=((g(8,2)*(VOLT(8)^2))-(VOLT(8)*VOLT(2)*(g(8,2)*cos(ANG(8)-ANG(2))+b(8,2)*sin(ANG(8)-ANG(2)))))*Sbase; %in MW
-Q28=(((-ysh28pu-b(2,8))*(VOLT(2)^2))-(VOLT(2)*VOLT(8)*(g(2,8)*sin(ANG(2)-ANG(8))-b(2,8)*cos(ANG(2)-ANG(8)))))*Sbase; %in MVar
-Q82=(((-ysh28pu-b(8,2))*(VOLT(8)^2))-(VOLT(8)*VOLT(2)*(g(8,2)*sin(ANG(8)-ANG(2))-b(8,2)*cos(ANG(8)-ANG(2)))))*Sbase; %in MVar
+Q28=(((-imag(ysh28pu)-b(2,8))*(VOLT(2)^2))-(VOLT(2)*VOLT(8)*(g(2,8)*sin(ANG(2)-ANG(8))-b(2,8)*cos(ANG(2)-ANG(8)))))*Sbase; %in MVar
+Q82=(((-imag(ysh28pu)-b(8,2))*(VOLT(8)^2))-(VOLT(8)*VOLT(2)*(g(8,2)*sin(ANG(8)-ANG(2))-b(8,2)*cos(ANG(8)-ANG(2)))))*Sbase; %in MVar
 Ploss_28=P28+P82;
 %PART G concluded
 
