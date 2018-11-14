@@ -17,8 +17,8 @@ U7=220/Ubase;
 nbus=8; %number of buses is 8
 
 %for line-12
-Z12pu=((0.05+1i*0.5)*(142.5))/Zbase;
-ysh12=(1i*3.6*1E-6)*(142.5)/2;
+Z12pu=((0.05+1i*0.5)*(86.5))/Zbase;
+ysh12=(1i*3.6*1E-6)*(86.5)/2;
 ysh12pu=ysh12*Zbase;
 
 %for line-23
@@ -52,8 +52,8 @@ ysh78=(1i*3.6*1E-6)*(90)/2;
 ysh78pu=ysh78*Zbase;
 
 %for line-28
-Z28pu=((0.05+1i*0.5)*(192.5))/Zbase;
-ysh28=(1i*3.6*1E-6)*(192.5)/2;
+Z28pu=((0.05+1i*0.5)*(136.5))/Zbase;
+ysh28=(1i*3.6*1E-6)*(136.5)/2;
 ysh28pu=ysh28*Zbase;
 
 %for line-36
@@ -127,7 +127,7 @@ QGD2=0;
 
 PGD3=0;
 
-PGD4=-242.5/Sbase;
+PGD4=-186.5/Sbase;
 QGD4=-30/Sbase;
 
 PGD5=0;
@@ -136,7 +136,7 @@ QGD5=0;
 PGD6=-230/Sbase;
 QGD6=-10/Sbase;
 
-PGD7=292.5/Sbase;
+PGD7=236.5/Sbase;
 
 PGD8=-210/Sbase;
 QGD8=-30/Sbase;
@@ -214,11 +214,11 @@ disp(N)
 
 %J will be 7x5 matrix
 J=zeros(5,7);
-
+%2 4 5 6 8
 for m=1:5
     for n=2:8
         if tmp(m)~=n
-            J(m,n-1)=-VOLT(tmp(m))*VOLT(n)*(G(tmp(m),n)*cos(ANG(tmp(m))-ANG(n)+B(tmp(m),n)*sin(ANG(tmp(m))-ANG(n))));  
+            J(m,n-1)=-VOLT(tmp(m))*VOLT(n)*(G(tmp(m),n)*cos(ANG(tmp(m))-ANG(n))+B(tmp(m),n)*sin(ANG(tmp(m))-ANG(n)));  
         else
             J(m,n-1)=P(n)-(G(n,n)*VOLT(n)*VOLT(n));
         end
@@ -255,7 +255,7 @@ g=-G; b=-B;
 
 P12=((g(1,2)*(VOLT(1)^2))-(VOLT(1)*VOLT(2)*(g(1,2)*cos(ANG(1)-ANG(2))+b(1,2)*sin(ANG(1)-ANG(2)))))*Sbase; %in MW
 P21=((g(2,1)*(VOLT(2)^2))-(VOLT(2)*VOLT(1)*(g(2,1)*cos(ANG(2)-ANG(1))+b(2,1)*sin(ANG(2)-ANG(1)))))*Sbase; %in MW
-Q12=(((-ysh12pu-b(1,2))*(VOLT(1)^2))-(VOLT(1)*VOLT(2)*(g(1,2)*sin(ANG(1)-ANG(2))-b(1,2)*cos(ANG(1)-ANG(2)))))*Sbase; %in MVar
+Q12=(((-imag(ysh12pu)-b(1,2))*(VOLT(1)^2))-(VOLT(1)*VOLT(2)*(g(1,2)*sin(ANG(1)-ANG(2))-b(1,2)*cos(ANG(1)-ANG(2)))))*Sbase; %in MVar
 Q21=(((-imag(ysh12pu)-b(2,1))*(VOLT(2)^2))-(VOLT(2)*VOLT(1)*(g(2,1)*sin(ANG(2)-ANG(1))-b(2,1)*cos(ANG(2)-ANG(1)))))*Sbase; %in MVar
 Ploss_12=P12+P21;
 
@@ -309,7 +309,6 @@ Ploss_28=P28+P82;
 %PART G concluded
 
 P_tot_losses=Ploss_12+Ploss_23+Ploss_34+Ploss_45+Ploss_56+Ploss_67+Ploss_78+Ploss_28+Ploss_36; %PART H
-
 
 
 
