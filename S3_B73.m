@@ -485,9 +485,6 @@ yshcdpu_0=0.5*yshcdpu_1;
 Zt2pu_2=Zt2pu_1;
 Zt2pu_0=Zt2pu_1;
 
-ZLDepu_2=ZLDepu_1;
-ZLDepu_0=ZLDepu_1;
-
 
 %Making of the Ybus matrix
 
@@ -512,7 +509,7 @@ Yde=-1/Zt2pu_1;
 Ydf=0;
 
 Yea=Yae; Yeb=Ybe; Yec=Yce; Yed=Yde; 
-Yee=-1/Zt2pu_1; Yef=0;
+Yee=1/Zt2pu_1; Yef=0;
 
 Yfa=Yaf; Yfb=Ybf; Yfc=Ycf; Yfd=Ydf; Yfe=Yef; 
 Yff=1/Z7Th_1;
@@ -524,9 +521,17 @@ Y=    [
         Yda Ydb Ydc Ydd Yde Ydf  ;
         Yea Yeb Yec Yed Yee Yef  ;
         Yfa Yfb Yfc Yfd Yfe Yff  ;
-        ];
- 
+        ]
 
+Z=inv(Y);
+
+Uthepu=Z(5,6)*Uth7pu/Z(6,6); %PART H
+
+Y_del_1=Y(1:5,1:5);
+Z_del_1=inv(Y_del_1)
+
+Zthepu_1=Z_del_1(5,5);
+Zthepu_2=Zthepu_1; %PART H
  
 Yaa_0=(1/Z7Th_0)+(1/Zt1pu_0);
 Yab_0=-1/Zt1pu_0;
@@ -543,17 +548,50 @@ Ycd_0=-1/Zcdpu_0;
 Yce_0=0;
 
 Yda_0=Yad_0; Ydb_0=Ybd_0; Ydc_0=Ycd_0; 
-Ydd_0=1/Zcdpu_0+yshcdpu_0+1/Zt2pu_0;
+Ydd_0=(1/Zcdpu_0)+yshcdpu_0+(1/Zt2pu_0);
 Yde_0=-1/Zt2pu_0;
 
 Yea_0=Yae_0; Yeb_0=Ybe_0; Yec_0=Yce_0; Yed_0=Yde_0; 
-Yee_0=-1/Zt2pu_1; 
+Yee_0=1/Zt2pu_0; 
  
-Y_new_del_0=      [
+Y_del_0= [
         Yaa_0 Yab_0 Yac_0 Yad_0 Yae_0   ;
         Yba_0 Ybb_0 Ybc_0 Ybd_0 Ybe_0   ;
         Yca_0 Ycb_0 Ycc_0 Ycd_0 Yce_0   ;
         Yda_0 Ydb_0 Ydc_0 Ydd_0 Yde_0   ;
         Yea_0 Yeb_0 Yec_0 Yed_0 Yee_0   ;
         ]
+        
+Z_del_0=inv(Y_del_0);
+
+Zthepu_0=Z_del_0(5,5); %PART H
+
+Upre_e_pu=[Uthepu;0;0];
+
+Z_del_e=[Zthepu_1 0 0;0 Zthepu_2 0;0 0 Zthepu_0];  %Taken from Slide 142
+
+alpha= e^(j*rad*120);
+T=[1 1 1 ;alpha^2 alpha 1 ;alpha alpha^2 1];
+
+ZLDbus_eph=[2*ZLDepu_1 0 0;0 ZLDepu_1 0;0 0 ZLDepu_1];
+Z_LDbus_es=inv(T)*ZLDbus_eph*T
+
+I_del_e=-(inv(Z_LDbus_es+Z_del_e))*Upre_e_pu;
+
+U_pre_a_pu_1=Z(1,6)*Uth7pu/Z(6,6);
+
+U_new_a_pu_1=U_pre_a_pu_1+(Z_del_1(1,5)*I_del_e(1,1));
+
+U_new_a_pu_2=Z_del_2(1,5)*I_del_e(2,1);
+
+U_new_a_pu_0=Z_del_0(1,5)*I_del_e(3,1);
+
+U_new_ph=Ub40*(T*[U_new_a_pu_1;U_new_a_pu_2;U_new_a_pu_0]);
+Unewph=abs(U_new_ph)/sqrt(3);  %PART I
+Unewang=angle(U_new_ph)*deg;   %PART I
+
+
+
+
+
         
