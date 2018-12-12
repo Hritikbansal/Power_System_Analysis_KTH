@@ -183,12 +183,13 @@ ysh28pu_0=0.5*ysh28pu_1;
 % Elements of Ybus Matrix
 Y11=(1/Zthpu_1)+(1/Zt1pu_1);
 Y12=-(1/Zt1pu_1);
-Y13=Y14=Y15=Y16=Y17=Y18=0; Y19=-(1/Zthpu_1);
+Y13=0;Y14=Y13;Y15=Y14;Y16=Y15;Y17=Y16;Y18=Y17;
+Y19=-(1/Zthpu_1);
 
 Y21=Y12;
 Y22=(1/Z23pu_1)+ysh23pu_1+ysh28pu_1+(1/Z28pu_1)+(1/Zt1pu_1);
 Y23=-(1/Z23pu_1);
-Y24=Y25=Y26=Y27=0;
+Y24=0;Y25=Y24;Y26=Y25;Y27=Y26;
 Y28=-(1/Z28pu_1);Y29=0;
 
 Y31=Y13;
@@ -197,22 +198,22 @@ Y33=(1/Z34pu_1)+ysh34pu_1+ysh36pu_1+(1/Z36pu_1)+ysh23pu_1+(1/Z23pu_1)+(1/Zc3pu_1
 Y34=-(1/Z34pu_1);
 Y35=0;
 Y36=-(1/Z36pu_1);
-Y37=Y38=Y39=0;
+Y37=0;Y38=Y37;Y39=0;
 
 Y41=Y14; Y42=Y24; Y43=Y34;
 Y44=(1/Z34pu_1)+ysh34pu_1+ysh45pu_1+(1/Z45pu_1)+(1/ZLD4pu_1);
 Y45=-(1/Z45pu_1);
-Y46=Y47=Y48=Y49=0;
+Y46=0;Y47=0;Y48=0;Y49=0;
 
 Y51=Y15; Y52=Y25; Y53=Y35; Y54=Y45; 
 Y55=(1/Z45pu_1)+ysh45pu_1+ysh56pu_1+(1/Z56pu_1)+(1/Zc5pu_1);
 Y56=-(1/Z56pu_1);
-Y57=Y58=Y59=0;
+Y57=0;Y58=0;Y59=0;
 
 Y61=Y16; Y62=Y26; Y63=Y36; Y64=Y46; Y65=Y56; 
 Y66=ysh67pu_1+(1/Z67pu_1)+ysh56pu_1+(1/Z56pu_1)+ysh36pu_1+(1/Z36pu_1)+(1/ZLD6pu_1);
 Y67=-(1/Z67pu_1);
-Y68=Y69=0;
+Y68=0;Y69=0;
 
 Y71=Y17; Y72=Y27; Y73=Y37; Y74=Y47; Y75=Y57; Y76=Y67;
 Y77=ysh78pu_1+(1/Z78pu_1)+ysh67pu_1+(1/Z67pu_1);
@@ -246,12 +247,12 @@ Ybus=[Y11 Y12 Y13 Y14 Y15 Y16 Y17 Y18 Y19;
 
 Y11=(1/Zthpu_0)+(1/Zt1pu_0);
 Y12=-(1/Zt1pu_0);
-Y13=Y14=Y15=Y16=Y17=Y18=0; 
+Y13=0;Y14=0;Y15=0;Y16=0;Y17=0;Y18=0; 
 
 Y21=Y12;
 Y22=(1/Z23pu_0)+ysh23pu_0+ysh28pu_0+(1/Z28pu_0)+(1/Zt1pu_0);
 Y23=-(1/Z23pu_0);
-Y24=Y25=Y26=Y27=0;
+Y24=0;Y25=0;Y26=0;Y27=0;
 Y28=-(1/Z28pu_0);
 
 Y31=Y13;
@@ -260,17 +261,17 @@ Y33=(1/Z34pu_0)+ysh34pu_0+ysh36pu_0+(1/Z36pu_0)+ysh23pu_0+(1/Z23pu_0);
 Y34=-(1/Z34pu_0);
 Y35=0;
 Y36=-(1/Z36pu_0);
-Y37=Y38=0;
+Y37=0;Y38=0;
 
 Y41=Y14; Y42=Y24; Y43=Y34;
 Y44=(1/Z34pu_0)+ysh34pu_0+ysh45pu_0+(1/Z45pu_0)+(1/ZLD4pu_0);
 Y45=-(1/Z45pu_0);
-Y46=Y47=Y48=0;
+Y46=0;Y47=0;Y48=0;
 
 Y51=Y15; Y52=Y25; Y53=Y35; Y54=Y45; 
 Y55=(1/Z45pu_0)+ysh45pu_0+ysh56pu_0+(1/Z56pu_0)+(1/Zc5pu_0);
 Y56=-(1/Z56pu_0);
-Y57=Y58=0;
+Y57=0;Y58=0;
 
 Y61=Y16; Y62=Y26; Y63=Y36; Y64=Y46; Y65=Y56; 
 Y66=ysh67pu_0+(1/Z67pu_0)+ysh56pu_0+(1/Z56pu_0)+ysh36pu_0+(1/Z36pu_0);
@@ -392,7 +393,7 @@ P_cons_8_0=real(SLD8_0);
 
 P_cons_8=P_cons_8_0+P_cons_8_1+P_cons_8_2;
 
-P_losses=(P_tot-(P_cons_4+P_cons_6+P_cons_8)); %PART F
+P_losses=(P_tot-(P_cons_4+P_cons_6+P_cons_8)) %PART F
 
 
 
@@ -490,18 +491,18 @@ Zt2pu_0=Zt2pu_1;
 
 Yaa=(1/Z7Th_1)+(1/Zt1pu_1);
 Yab=-1/Zt1pu_1;
-Yac=Yad=Yae=0;
+Yac=0;Yad=0;Yae=0;
 Yaf=-(1/Z7Th_1);
 
 Yba=Yab;
 Ybb=(1/Zt1pu_1)+(1/ZLDbpu_1)+yshbcpu_1+(1/Zbcpu_1);
 Ybc=-1/Zbcpu_1;
-Ybd=Ybe=Ybf=0;
+Ybd=0;Ybe=0;Ybf=0;
 
 Yca=Yac; Ycb=Ybc;
 Ycc=(1/Zbcpu_1)+yshbcpu_1+(1/ZLDcpu_1)+yshcdpu_1+(1/Zcdpu_1);
 Ycd=-1/Zcdpu_1;
-Yce=Ycf=0;
+Yce=0;Ycf=0;
 
 Yda=Yad; Ydb=Ybd; Ydc=Ycd; 
 Ydd=1/Zcdpu_1+yshcdpu_1+1/Zt2pu_1;
@@ -514,7 +515,7 @@ Yee=1/Zt2pu_1; Yef=0;
 Yfa=Yaf; Yfb=Ybf; Yfc=Ycf; Yfd=Ydf; Yfe=Yef; 
 Yff=1/Z7Th_1;
 
-Y=    [
+Y=   [
         Yaa Yab Yac Yad Yae Yaf  ;
         Yba Ybb Ybc Ybd Ybe Ybf  ;
         Yca Ycb Ycc Ycd Yce Ycf  ;
@@ -528,19 +529,19 @@ Z=inv(Y);
 Uthepu=Z(5,6)*Uth7pu/Z(6,6); %PART H
 
 Y_del_1=Y(1:5,1:5);
-Z_del_1=inv(Y_del_1)
+Z_del_1=inv(Y_del_1);
 
 Zthepu_1=Z_del_1(5,5);
 Zthepu_2=Zthepu_1; %PART H
  
 Yaa_0=(1/Z7Th_0)+(1/Zt1pu_0);
 Yab_0=-1/Zt1pu_0;
-Yac_0=Yad_0=Yae_0=0;
+Yac_0=0;Yad_0=0;;Yae_0=0;
 
 Yba_0=Yab_0;
 Ybb_0=(1/Zt1pu_0)+yshbcpu_0+(1/Zbcpu_0);
 Ybc_0=-1/Zbcpu_0;
-Ybd_0=Ybe_0=0;
+Ybd_0=0;Ybe_0=0;
 
 Yca_0=Yac_0; Ycb_0=Ybc_0;
 Ycc_0=(1/Zbcpu_0)+yshbcpu_0+(1/ZLDcpu_0)+yshcdpu_0+(1/Zcdpu_0);
@@ -570,7 +571,7 @@ Upre_e_pu=[Uthepu;0;0];
 
 Z_del_e=[Zthepu_1 0 0;0 Zthepu_2 0;0 0 Zthepu_0];  %Taken from Slide 142
 
-alpha= e^(j*rad*120);
+alpha= exp(j*rad*120);
 T=[1 1 1 ;alpha^2 alpha 1 ;alpha alpha^2 1];
 
 ZLDbus_eph=[2*ZLDepu_1 0 0;0 ZLDepu_1 0;0 0 ZLDepu_1];
@@ -587,8 +588,8 @@ U_new_a_pu_2=Z_del_2(1,5)*I_del_e(2,1);
 U_new_a_pu_0=Z_del_0(1,5)*I_del_e(3,1);
 
 U_new_ph=Ub40*(T*[U_new_a_pu_1;U_new_a_pu_2;U_new_a_pu_0]);
-Unewph=abs(U_new_ph)/sqrt(3);  %PART I
-Unewang=angle(U_new_ph)*deg;   %PART I
+Unewph=abs(U_new_ph)/sqrt(3)  %PART I
+Unewang=angle(U_new_ph)*deg   %PART I
 
 
 
