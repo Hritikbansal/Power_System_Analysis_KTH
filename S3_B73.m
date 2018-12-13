@@ -18,7 +18,7 @@ Ib40=Sbase/(sqrt(3)*Ub40);
 Zb70=(Ub70^2)/(Sbase);
 Zb40=(Ub40^2)/(Sbase);
 
-Sn1= -2.5; %using the rating of the transformer as it is
+Sn1= 53.5; %using the rating of the transformer as it is
 
 %Voltage at Node 9
 U9pu=70/70;
@@ -68,13 +68,13 @@ ysh36=(j*3*1E-6)*(25)/2;
 ysh36pu_1=ysh36*Zb40;
 
 %for line-28
-Z28pu_1=((0.8+j*0.3)*(112.5))/Zb40;
-ysh28=(j*3*1E-6)*(112.5)/2;
+Z28pu_1=((0.8+j*0.3)*(56.5))/Zb40;
+ysh28=(j*3*1E-6)*(56.5)/2;
 ysh28pu_1=ysh28*Zb40;
 
 %for the load at Node 4
 cosphi_4=0.95; sinphi_4=sqrt(1-(cosphi_4^2));
-PLD_4=2.185;
+PLD_4=2.073;
 magSLD_4=PLD_4/cosphi_4; %magnitude of Complex Power
 SLD_4=magSLD_4*(cosphi_4+j*sinphi_4);
 U4n=Ub40;
@@ -83,7 +83,7 @@ ZLD4pu_1=Zld_4/Zb40;
 
 %for the load at Node 6
 cosphi_6=0.98; sinphi_6=sqrt(1-(cosphi_6^2));
-PLD_6=2.685;
+PLD_6=2.573;
 magSLD_6=PLD_6/cosphi_6; %magnitude of Complex Power
 SLD_6=magSLD_6*(cosphi_6+j*sinphi_6);
 U6n=Ub40;
@@ -92,7 +92,7 @@ ZLD6pu_1=Zld_6/Zb40;
 
 %for the load at Node 8
 cosphi_8=0.95; sinphi_8=sqrt(1-(cosphi_8^2));
-PLD_8=3.185;
+PLD_8=3.073;
 magSLD_8=PLD_8/cosphi_8; %magnitude of Complex Power
 SLD_8=magSLD_8*(cosphi_8+j*sinphi_8);
 U8n=Ub40;
@@ -173,7 +173,7 @@ ZLD8pu_2=ZLD8pu_1;
 ZLD8pu_0=ZLD8pu_1;
 
 Z28pu_2=Z28pu_1;
-Z28pu_0=(2+j*0.6)*(112.5)/Zb40;
+Z28pu_0=(2+j*0.6)*(56.5)/Zb40;
 
 ysh28pu_2=ysh28pu_1;
 ysh28pu_0=0.5*ysh28pu_1;
@@ -183,13 +183,12 @@ ysh28pu_0=0.5*ysh28pu_1;
 % Elements of Ybus Matrix
 Y11=(1/Zthpu_1)+(1/Zt1pu_1);
 Y12=-(1/Zt1pu_1);
-Y13=0;Y14=Y13;Y15=Y14;Y16=Y15;Y17=Y16;Y18=Y17;
-Y19=-(1/Zthpu_1);
+Y13=Y14=Y15=Y16=Y17=Y18=0; Y19=-(1/Zthpu_1);
 
 Y21=Y12;
 Y22=(1/Z23pu_1)+ysh23pu_1+ysh28pu_1+(1/Z28pu_1)+(1/Zt1pu_1);
 Y23=-(1/Z23pu_1);
-Y24=0;Y25=Y24;Y26=Y25;Y27=Y26;
+Y24=Y25=Y26=Y27=0;
 Y28=-(1/Z28pu_1);Y29=0;
 
 Y31=Y13;
@@ -198,22 +197,22 @@ Y33=(1/Z34pu_1)+ysh34pu_1+ysh36pu_1+(1/Z36pu_1)+ysh23pu_1+(1/Z23pu_1)+(1/Zc3pu_1
 Y34=-(1/Z34pu_1);
 Y35=0;
 Y36=-(1/Z36pu_1);
-Y37=0;Y38=Y37;Y39=0;
+Y37=Y38=Y39=0;
 
 Y41=Y14; Y42=Y24; Y43=Y34;
 Y44=(1/Z34pu_1)+ysh34pu_1+ysh45pu_1+(1/Z45pu_1)+(1/ZLD4pu_1);
 Y45=-(1/Z45pu_1);
-Y46=0;Y47=0;Y48=0;Y49=0;
+Y46=Y47=Y48=Y49=0;
 
 Y51=Y15; Y52=Y25; Y53=Y35; Y54=Y45; 
 Y55=(1/Z45pu_1)+ysh45pu_1+ysh56pu_1+(1/Z56pu_1)+(1/Zc5pu_1);
 Y56=-(1/Z56pu_1);
-Y57=0;Y58=0;Y59=0;
+Y57=Y58=Y59=0;
 
 Y61=Y16; Y62=Y26; Y63=Y36; Y64=Y46; Y65=Y56; 
 Y66=ysh67pu_1+(1/Z67pu_1)+ysh56pu_1+(1/Z56pu_1)+ysh36pu_1+(1/Z36pu_1)+(1/ZLD6pu_1);
 Y67=-(1/Z67pu_1);
-Y68=0;Y69=0;
+Y68=Y69=0;
 
 Y71=Y17; Y72=Y27; Y73=Y37; Y74=Y47; Y75=Y57; Y76=Y67;
 Y77=ysh78pu_1+(1/Z78pu_1)+ysh67pu_1+(1/Z67pu_1);
@@ -247,12 +246,12 @@ Ybus=[Y11 Y12 Y13 Y14 Y15 Y16 Y17 Y18 Y19;
 
 Y11=(1/Zthpu_0)+(1/Zt1pu_0);
 Y12=-(1/Zt1pu_0);
-Y13=0;Y14=0;Y15=0;Y16=0;Y17=0;Y18=0; 
+Y13=Y14=Y15=Y16=Y17=Y18=0; 
 
 Y21=Y12;
 Y22=(1/Z23pu_0)+ysh23pu_0+ysh28pu_0+(1/Z28pu_0)+(1/Zt1pu_0);
 Y23=-(1/Z23pu_0);
-Y24=0;Y25=0;Y26=0;Y27=0;
+Y24=Y25=Y26=Y27=0;
 Y28=-(1/Z28pu_0);
 
 Y31=Y13;
@@ -261,17 +260,17 @@ Y33=(1/Z34pu_0)+ysh34pu_0+ysh36pu_0+(1/Z36pu_0)+ysh23pu_0+(1/Z23pu_0);
 Y34=-(1/Z34pu_0);
 Y35=0;
 Y36=-(1/Z36pu_0);
-Y37=0;Y38=0;
+Y37=Y38=0;
 
 Y41=Y14; Y42=Y24; Y43=Y34;
 Y44=(1/Z34pu_0)+ysh34pu_0+ysh45pu_0+(1/Z45pu_0)+(1/ZLD4pu_0);
 Y45=-(1/Z45pu_0);
-Y46=0;Y47=0;Y48=0;
+Y46=Y47=Y48=0;
 
 Y51=Y15; Y52=Y25; Y53=Y35; Y54=Y45; 
 Y55=(1/Z45pu_0)+ysh45pu_0+ysh56pu_0+(1/Z56pu_0)+(1/Zc5pu_0);
 Y56=-(1/Z56pu_0);
-Y57=0;Y58=0;
+Y57=Y58=0;
 
 Y61=Y16; Y62=Y26; Y63=Y36; Y64=Y46; Y65=Y56; 
 Y66=ysh67pu_0+(1/Z67pu_0)+ysh56pu_0+(1/Z56pu_0)+ysh36pu_0+(1/Z36pu_0);
@@ -294,25 +293,24 @@ Y_del_0=[
         Y61 Y62 Y63 Y64 Y65 Y66 Y67 Y68 ;
         Y71 Y72 Y73 Y74 Y75 Y76 Y77 Y78 ;
         Y81 Y82 Y83 Y84 Y85 Y86 Y87 Y88 ;
-        ];
+        ]
         
-disp(Y_del_0);   %Answer to Part B
 
 Y_del_2=Ybus(1:8,1:8);
 Y_del_1=Ybus(1:8,1:8);
 
 Zbus=inv(Ybus); %impedance matrix for the given system
-Uth7pu=Zbus(7,9)/Zbus(9,9); %Answer to Part C
+Uth7pu=Zbus(7,9)/Zbus(9,9) %Answer to Part C
 
 Z_del_1=inv(Y_del_1);
 
-Z7Th_1=Z_del_1(7,7);   %PART C
-Z7Th_2=Z7Th_1;   %PART C
+Z7Th_1=Z_del_1(7,7)   %PART C
+Z7Th_2=Z7Th_1   %PART C
 
 Z_del_0=inv(Y_del_0);
 Z_del_2=inv(Y_del_2);
 
-Z7Th_0=Z_del_0(7,7);   %PART C
+Z7Th_0=Z_del_0(7,7)   %PART C
 
 I7fa =((3*Uth7pu)/(Z7Th_0+Z7Th_1+Z7Th_2))*Ib40;   %PART D in kA
 abs_I7fa=abs(I7fa)
@@ -416,14 +414,14 @@ Sn2=5;
 Zt1pu_1=j*(0.07)*(Sbase/Sn1);
 
 %per-unit impedance of Cable-bc
-Zbc=(0.16+j*0.08)*(0.385) ;%length of the cable is 0.273km
+Zbc=(0.16+j*0.08)*(0.273) ;%length of the cable is 0.273km
 Zbcpu_1=Zbc/Zb12;
-yshbc=(j*3*1E-6)*(0.385)/2;
+yshbc=(j*3*1E-6)*(0.273)/2;
 yshbcpu_1=yshbc*Zb12;
 
 %per-unit impedance for LD_b
 cosphi_b=0.9; sinphi_b=sqrt(1-(cosphi_b^2));
-PLD_b=0.285;
+PLD_b=0.173;
 magSLD_b=PLD_b/cosphi_b; %magnitude of Complex Power
 SLD_b=magSLD_b*(cosphi_b+j*sinphi_b);
 Ubn=Ub12;
@@ -432,15 +430,15 @@ ZLDbpu_1=Zld_b/Zb12;
 
 
 %per-unit impedance of Cable-cd
-Zcd=(0.16+j*0.08)*(0.385) ;%length of the cable is 0.385km
+Zcd=(0.16+j*0.08)*(0.273) ;%length of the cable is 0.385km
 Zcdpu_1=Zcd/Zb12;
-yshcd=(j*3*1E-6)*(0.385)/2;
+yshcd=(j*3*1E-6)*(0.273)/2;
 yshcdpu_1=yshcd*Zb12;
 
 
 %per-unit impedance of LD_c
 cosphi_c=0.95; sinphi_c=sqrt(1-(cosphi_c^2));
-PLD_c=0.215;
+PLD_c=0.103;
 magSLD_c=PLD_c/cosphi_c; %magnitude of Complex Power
 SLD_c=magSLD_c*(cosphi_c+j*sinphi_c);
 Ucn=Ub12;
@@ -454,7 +452,7 @@ Zt2pu_1=j*(0.08)*(Sbase/Sn2);
 
 %per-unit impedance of LD_e
 cosphi_e=0.9; sinphi_e=sqrt(1-(cosphi_e^2));
-PLD_e=0.075;
+PLD_e=0.187;
 magSLD_e=PLD_e/cosphi_e; %magnitude of Complex Power
 SLD_e=magSLD_e*(cosphi_e+j*sinphi_e);
 Uen=Ub6;
@@ -491,18 +489,18 @@ Zt2pu_0=Zt2pu_1;
 
 Yaa=(1/Z7Th_1)+(1/Zt1pu_1);
 Yab=-1/Zt1pu_1;
-Yac=0;Yad=0;Yae=0;
+Yac=Yad=Yae=0;
 Yaf=-(1/Z7Th_1);
 
 Yba=Yab;
 Ybb=(1/Zt1pu_1)+(1/ZLDbpu_1)+yshbcpu_1+(1/Zbcpu_1);
 Ybc=-1/Zbcpu_1;
-Ybd=0;Ybe=0;Ybf=0;
+Ybd=Ybe=Ybf=0;
 
 Yca=Yac; Ycb=Ybc;
 Ycc=(1/Zbcpu_1)+yshbcpu_1+(1/ZLDcpu_1)+yshcdpu_1+(1/Zcdpu_1);
 Ycd=-1/Zcdpu_1;
-Yce=0;Ycf=0;
+Yce=Ycf=0;
 
 Yda=Yad; Ydb=Ybd; Ydc=Ycd; 
 Ydd=1/Zcdpu_1+yshcdpu_1+1/Zt2pu_1;
@@ -515,7 +513,7 @@ Yee=1/Zt2pu_1; Yef=0;
 Yfa=Yaf; Yfb=Ybf; Yfc=Ycf; Yfd=Ydf; Yfe=Yef; 
 Yff=1/Z7Th_1;
 
-Y=   [
+Y=    [
         Yaa Yab Yac Yad Yae Yaf  ;
         Yba Ybb Ybc Ybd Ybe Ybf  ;
         Yca Ycb Ycc Ycd Yce Ycf  ;
@@ -530,18 +528,18 @@ Uthepu=Z(5,6)*Uth7pu/Z(6,6); %PART H
 
 Y_del_1=Y(1:5,1:5);
 Z_del_1=inv(Y_del_1);
-
+Z_del_2=Z_del_1;
 Zthepu_1=Z_del_1(5,5);
 Zthepu_2=Zthepu_1; %PART H
  
 Yaa_0=(1/Z7Th_0)+(1/Zt1pu_0);
 Yab_0=-1/Zt1pu_0;
-Yac_0=0;Yad_0=0;;Yae_0=0;
+Yac_0=Yad_0=Yae_0=0;
 
 Yba_0=Yab_0;
 Ybb_0=(1/Zt1pu_0)+yshbcpu_0+(1/Zbcpu_0);
 Ybc_0=-1/Zbcpu_0;
-Ybd_0=0;Ybe_0=0;
+Ybd_0=Ybe_0=0;
 
 Yca_0=Yac_0; Ycb_0=Ybc_0;
 Ycc_0=(1/Zbcpu_0)+yshbcpu_0+(1/ZLDcpu_0)+yshcdpu_0+(1/Zcdpu_0);
@@ -571,7 +569,7 @@ Upre_e_pu=[Uthepu;0;0];
 
 Z_del_e=[Zthepu_1 0 0;0 Zthepu_2 0;0 0 Zthepu_0];  %Taken from Slide 142
 
-alpha= exp(j*rad*120);
+alpha= e^(j*rad*120);
 T=[1 1 1 ;alpha^2 alpha 1 ;alpha alpha^2 1];
 
 ZLDbus_eph=[2*ZLDepu_1 0 0;0 ZLDepu_1 0;0 0 ZLDepu_1];
@@ -589,7 +587,7 @@ U_new_a_pu_0=Z_del_0(1,5)*I_del_e(3,1);
 
 U_new_ph=Ub40*(T*[U_new_a_pu_1;U_new_a_pu_2;U_new_a_pu_0]);
 Unewph=abs(U_new_ph)/sqrt(3)  %PART I
-Unewang=angle(U_new_ph)*deg   %PART I
+Unewang=angle(U_new_ph)*deg  %PART I
 
 
 
